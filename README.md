@@ -11,4 +11,5 @@ This project provides a visual representation of the bubble sort algorithm using
 - Uses matplotlib for creating an animated line plot
 - Customizable array size and animation speed
 
+![Visualisation Example](images/visualiser.jpg?raw=true "Sort Algorithm Visualiser")
 ...
