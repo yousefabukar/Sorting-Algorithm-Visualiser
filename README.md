@@ -2,7 +2,7 @@
 
 ## *A Python project for visualizing sorting algorithms*
 
-This project provides a visual representation of the bubble sort algorithm using matplotlib. It creates an animated plot that shows how the algorithm rearranges elements step by step.
+This project provides a visual representation of the Bubble, Insertion, Selection, Merge, Quick and Heap sort algorithms using matplotlib. It creates an animated plot that shows how the algorithms rearranges elements step by step.
 
 ### Features
 
@@ -13,3 +13,4 @@ This project provides a visual representation of the bubble sort algorithm using
 
 ![Visualisation Example](images/visualiser.jpg?raw=true "Sort Algorithm Visualiser")
 ...
+
