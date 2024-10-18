@@ -75,12 +75,14 @@ class SortingVisualizer:
             self.algorithm_index = (self.algorithm_index + 1) % len(self.algorithms)
             self.fig.canvas.draw_idle()
 
+        self.fig.canvas.draw()
         return self.bar_rects
 
     def start_next_sort(self):
         self.current_algorithm = list(self.algorithms.keys())[self.algorithm_index]
         self.radio_buttons.set_active(self.algorithm_index)
         self.update_complexity_info()
+        self.data = generate_data(self.n)
         for rect, val in zip(self.bar_rects, self.data):
             rect.set_height(val)
         self.iteration[0] = 0
@@ -95,7 +97,7 @@ class SortingVisualizer:
             frames=None,
             interval=50,
             repeat=True,
-            blit=True
+            blit=False
         )
 
     def algorithm_changed(self, label):

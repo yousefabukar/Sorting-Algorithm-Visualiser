@@ -1,27 +1,36 @@
 def merge_sort(arr):
-    def merge(left, right):
-        result = []
-        i, j = 0, 0
+    def merge(arr, start, mid, end):
+        left = arr[start:mid]
+        right = arr[mid:end]
+        i, j, k = 0, 0, start
+
         while i < len(left) and j < len(right):
             if left[i] <= right[j]:
-                result.append(left[i])
+                arr[k] = left[i]
                 i += 1
             else:
-                result.append(right[j])
+                arr[k] = right[j]
                 j += 1
-            yield result + left[i:] + right[j:]
-        result.extend(left[i:])
-        result.extend(right[j:])
-        yield result
+            k += 1
+            yield arr
 
-    def merge_sort_recursive(arr):
-        if len(arr) <= 1:
-            return arr
-        
-        mid = len(arr) // 2
-        left = merge_sort_recursive(arr[:mid])
-        right = merge_sort_recursive(arr[mid:])
-        
-        yield from merge(left, right)
+        while i < len(left):
+            arr[k] = left[i]
+            i += 1
+            k += 1
+            yield arr
 
-    yield from merge_sort_recursive(arr)
+        while j < len(right):
+            arr[k] = right[j]
+            j += 1
+            k += 1
+            yield arr
+
+    def merge_sort_recursive(arr, start, end):
+        if end - start > 1:
+            mid = (start + end) // 2
+            yield from merge_sort_recursive(arr, start, mid)
+            yield from merge_sort_recursive(arr, mid, end)
+            yield from merge(arr, start, mid, end)
+
+    yield from merge_sort_recursive(arr, 0, len(arr))
